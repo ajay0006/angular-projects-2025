@@ -5,6 +5,4 @@ import { Component, signal } from '@angular/core';
     templateUrl: './header.html',
     styleUrls: ['./header.css']
 })
-export class Header {
-    protected readonly title = signal('header-component');
-}
+export class Header {}

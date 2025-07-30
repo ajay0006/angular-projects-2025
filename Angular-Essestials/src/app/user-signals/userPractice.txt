@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { test_users } from '../test-users';
 
 @Component({
@@ -10,10 +10,13 @@ import { test_users } from '../test-users';
 export class User {
   selectedUser = test_users[Math.floor(Math.random() * test_users.length)];
   selectedUserSignal = signal(this.selectedUser);
-
-  get imgPath() {
-    return `assets/users/${this.selectedUserSignal().avatar}`;
-  }
+  
+/* the computed allows the template to reactively update when the function changes
+   as opposed to signal that just tracks the current value
+   think of it as computed is for functions that depend on other signals
+   and signals are for values that can change over time    
+*/
+  imgPath = computed(() => `assets/users/${this.selectedUserSignal().avatar}`);
 
   onClick() {
     this.selectedUserSignal.set(test_users[Math.floor(Math.random() * test_users.length)]);

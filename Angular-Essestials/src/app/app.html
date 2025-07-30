@@ -1,8 +1,33 @@
-<app-header/>
+<app-header />
 <main>
   <ul id="user-list">
     <li>
-      <app-user/>
+      <app-user [avatarSignal]="userLists[0].avatar" [nameSignal]="userLists[0].name"/>
     </li>
-  </ul>  
+    <li>
+      <app-user [avatarSignal]="userLists[1].avatar" [nameSignal]="userLists[1].name"/>
+    </li>
+    <li>
+      <app-user [avatarSignal]="userLists[2].avatar" [nameSignal]="userLists[2].name"/>
+    </li>
+    <li>
+      <app-user [avatarSignal]="userLists[3].avatar" [nameSignal]="userLists[3].name"/>
+    </li>
+  </ul>
+</main>
+<main>
+  <ul id="user-list">
+    <li>
+      <app-userInput [avatar]="userLists[0].avatar" [name]="userLists[0].name"/>
+    </li>
+    <li>
+      <app-userInput [avatar]="userLists[1].avatar" [name]="userLists[1].name" />
+    </li>
+    <li>
+      <app-userInput [avatar]="userLists[2].avatar" [name]="userLists[2].name" />
+    </li>
+    <li>
+      <app-userInput [avatar]="userLists[3].avatar" [name]="userLists[3].name" />
+    </li>
+  </ul>
 </main>

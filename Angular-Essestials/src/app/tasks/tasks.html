@@ -1,0 +1,17 @@
+<section id="tasks">
+    <header>
+        <h2>Tasks for {{ name }}</h2>
+        <menu>
+            <button (click)="onAddTask()">Add Task</button>
+            <button (click)="onDeleteAllTasks()">Delete All Tasks</button>
+        </menu>
+    </header>
+    <ul>
+        @for (task of tasks; track task.id) {
+        <li>
+            <span>{{ task.name }}</span>
+            <button (click)="onDeleteTask(task.id)">Delete</button>
+        </li>
+        }
+    </ul>
+</section>

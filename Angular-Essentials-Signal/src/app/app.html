@@ -1,0 +1,18 @@
+<app-header-signals />
+<main>
+  <ul id="user-list">
+    <li>
+      <app-user-signals [idSignal]="userLists()[0].id" [avatarSignal]="userLists()[0].avatar" [nameSignal]="userLists()[0].name" (userSelected)="onSelectedUser($event)" />
+    </li>
+    <li>
+      <app-user-signals [idSignal]="userLists()[1].id" [avatarSignal]="userLists()[1].avatar" [nameSignal]="userLists()[1].name" (userSelected)="onSelectedUser($event)" />
+    </li>
+    <li>
+      <app-user-signals [idSignal]="userLists()[2].id" [avatarSignal]="userLists()[2].avatar" [nameSignal]="userLists()[2].name" (userSelected)="onSelectedUser($event)" />
+    </li>
+    <li>
+      <app-user-signals [idSignal]="userLists()[3].id" [avatarSignal]="userLists()[3].avatar" [nameSignal]="userLists()[3].name" (userSelected)="onSelectedUser($event)" />
+    </li>
+  </ul>
+  <app-tasks-signals name = "..." />
+</main>

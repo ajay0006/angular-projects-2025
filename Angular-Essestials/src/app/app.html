@@ -1,33 +1,15 @@
 <app-header />
 <main>
   <ul id="user-list">
+    @for (item of userLists; track item.id) {
     <li>
-      <app-user [avatarSignal]="userLists[0].avatar" [nameSignal]="userLists[0].name"/>
+      <app-userInput [user]="item" (userSelected)="onSelectedUser($event)" />
     </li>
-    <li>
-      <app-user [avatarSignal]="userLists[1].avatar" [nameSignal]="userLists[1].name"/>
-    </li>
-    <li>
-      <app-user [avatarSignal]="userLists[2].avatar" [nameSignal]="userLists[2].name"/>
-    </li>
-    <li>
-      <app-user [avatarSignal]="userLists[3].avatar" [nameSignal]="userLists[3].name"/>
-    </li>
+    }
   </ul>
-</main>
-<main>
-  <ul id="user-list">
-    <li>
-      <app-userInput [avatar]="userLists[0].avatar" [name]="userLists[0].name"/>
-    </li>
-    <li>
-      <app-userInput [avatar]="userLists[1].avatar" [name]="userLists[1].name" />
-    </li>
-    <li>
-      <app-userInput [avatar]="userLists[2].avatar" [name]="userLists[2].name" />
-    </li>
-    <li>
-      <app-userInput [avatar]="userLists[3].avatar" [name]="userLists[3].name" />
-    </li>
-  </ul>
+  @if (selectedUserId) {
+  <app-tasks [name]="selectedUser.name" />
+  } @else {
+  <p id="fallback">Please select a user to see their tasks.</p>
+  }
 </main>

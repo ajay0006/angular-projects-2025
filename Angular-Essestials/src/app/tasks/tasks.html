@@ -1,15 +1,20 @@
+@if (isAddTaskFormVisible) {
+    <app-add-task-form (cancel)="onCancelAddTask()" (addTask)="onAddTask($event)"/>
+ } 
+<!-- <app-add-task-form #addTaskForm (addTask)="onAddTask($event)"></app-add-task-form> -->
 <section id="tasks">
     <header>
         <h2>Tasks for {{ name }}</h2>
         <menu>
-            <button (click)="onAddTask()">Add Task</button>
+            <!-- <button (click)="addTaskForm.openForm()">Add Task</button> -->
+            <button (click)="onStartAddTask()">Add Task</button>
             <button (click)="onDeleteAllTasks()">Delete All Tasks</button>
         </menu>
     </header>
     <ul>
-        @for (task of taskList; track task.id) {
+        @for (task of selectedUserTasks; track task.id) {
         <li>
-            <app-task [task]="task" (delete)="onDeleteTask(task.id)"></app-task>
+            <app-task [task]="task" (completeTask)="onCompleteTask($event)"></app-task>
         </li>
         }
     </ul>

@@ -1,11 +1,5 @@
-import { Component, Input } from '@angular/core';
-type Task_Object = {
-  id: string;
-  userId: string;
-  title: string;
-  summary: string;
-  dueDate: string
-}
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {type Task_Object } from '../../models/task.model';
 
 @Component({
   selector: 'app-task',
@@ -15,10 +9,14 @@ type Task_Object = {
 })
 export class Task {
     @Input({ required: true }) task: Task_Object = { id: '', userId: '', title: '', summary: '', dueDate: '' };
+    @Output() completeTask = new EventEmitter<string>();
 
-    onCompleteTask(taskId: string) {
-        console.log(`Task with ID ${taskId} completed.`);
-        // Here you would typically emit an event or call a service to handle task completion
+    // onCompleteTask(taskId: string) {
+    //     this.completeTask.emit(taskId);
+    //     console.log(`Task with ID ${taskId} completed.`);
+    // }    
+    onCompleteTask() {
+        this.completeTask.emit(this.task.id);
     }
 
 }

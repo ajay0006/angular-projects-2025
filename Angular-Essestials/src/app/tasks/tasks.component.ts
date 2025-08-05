@@ -8,8 +8,8 @@ import { Task_Object } from '../../models/task.model';
 @Component({
   selector: 'app-tasks',
   imports: [TaskComponent, AddTaskForm],
-  templateUrl: './tasksComponent.html',
-  styleUrl: './tasksComponent.css'
+  templateUrl: './tasks.component.html',
+  styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
   @Input({ required: true }) tasksUserId!: string;

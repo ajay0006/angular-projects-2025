@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-task-form',
-  templateUrl: './add-task-form.html',
+  templateUrl: './add-task-formComponent.html',
   imports: [FormsModule],
-  styleUrls: ['./add-task-form.css']
+  styleUrls: ['./add-task-formComponent.css']
 })
 export class AddTaskForm {
     @Output() cancel = new EventEmitter<void>();

@@ -1,17 +1,17 @@
 import { Component, Input } from '@angular/core';
-import { Task } from '../task/task'
-import { AddTaskForm } from '../add-task-form/add-task-form';
+import { TaskComponent } from '../task/taskComponent'
+import { AddTaskForm } from '../add-task-form/add-task-formComponent';
 import { test_tasks } from '../test-tasks';
 import { Task_Object } from '../../models/task.model';
 
 
 @Component({
   selector: 'app-tasks',
-  imports: [Task, AddTaskForm],
-  templateUrl: './tasks.html',
-  styleUrl: './tasks.css'
+  imports: [TaskComponent, AddTaskForm],
+  templateUrl: './tasksComponent.html',
+  styleUrl: './tasksComponent.css'
 })
-export class Tasks {
+export class TasksComponent {
   @Input({ required: true }) tasksUserId!: string;
   @Input({ required: true }) name!: string;
   taskList = test_tasks;

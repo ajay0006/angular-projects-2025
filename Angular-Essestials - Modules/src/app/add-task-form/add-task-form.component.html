@@ -1,0 +1,27 @@
+<div class="backdrop" (click)="onCloseForm()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <!-- event binding with the submit this prevents the browsers default behavior -->
+  <form (ngSubmit)="submitTaskForm()">
+    <p>
+      <label for="title">Title</label>
+      <!-- 2 way binding with the ngModel -->
+      <input type="text" id="title" name="title" [(ngModel)]="taskObj.title" />
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary" [(ngModel)]="taskObj.summary"></textarea>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" [(ngModel)]="taskObj.dueDate" />
+    </p>
+
+    <p class="actions">
+      <button type="button" (click)="onCloseForm()">Cancel</button>
+      <button type="submit">Create</button>
+    </p>
+  </form>
+</dialog>

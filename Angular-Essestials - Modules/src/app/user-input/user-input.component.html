@@ -1,0 +1,8 @@
+<app-card>
+  <!-- event binding with the click -->
+  <button [class.active]="selectedCSS" (click)="onClick()">
+    <!-- property binding -->
+    <img [src]="imgPath" [alt]="user.name" />
+    <span>{{ user.name }}</span>
+  </button>
+</app-card>

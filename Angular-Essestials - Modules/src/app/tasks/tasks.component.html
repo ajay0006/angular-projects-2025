@@ -1,0 +1,22 @@
+@if (isAddTaskFormVisible) {
+    <app-add-task-form [userId]="tasksUserId" (close)="onCloseAddTask()"/>
+ } 
+<!-- <app-add-task-form #addTaskForm (addTask)="onAddTask($event)"></app-add-task-form> -->
+<section id="tasks">
+    <header>
+        <h2>Tasks for {{ name }}</h2>
+        <menu>
+            <!-- <button (click)="addTaskForm.openForm()">Add Task</button> -->
+            <button (click)="onStartAddTask()">Add Task</button>
+            <button (click)="onDeleteAllTasks()">Delete All Tasks</button>
+        </menu>
+    </header>
+    <ul>
+        @for (task of selectedUserTasks; track task.id) {
+        <li>
+            <!-- <app-task [task]="task" (completeTask)="onCompleteTask($event)"></app-task> -->
+            <app-task [task]="task"></app-task>
+        </li>
+        }
+    </ul> 
+</section>

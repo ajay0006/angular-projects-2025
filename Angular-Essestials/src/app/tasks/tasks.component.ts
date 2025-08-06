@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from '../task/taskComponent'
-import { AddTaskForm } from '../add-task-form/add-task-formComponent';
+import { AddTaskForm } from '../add-task-form/add-task-form.component';
 import { test_tasks } from '../test-tasks';
 import { Task_Object } from '../../models/task.model';
+import { TasksService } from './tasks.service';
 
 
 @Component({
@@ -14,29 +15,20 @@ import { Task_Object } from '../../models/task.model';
 export class TasksComponent {
   @Input({ required: true }) tasksUserId!: string;
   @Input({ required: true }) name!: string;
-  taskList = test_tasks;
   isAddTaskFormVisible = false;
 
-  onCompleteTask(taskId: string) {
-    this.taskList = this.taskList.filter(task => task.id !== taskId);
-    console.log(`Task with ID ${taskId} completed.`);
+constructor(private tasksService: TasksService) {
+  this.tasksService = tasksService;
   }
 
-  onAddTask(taskObject: Task_Object) {
-    const newTask: Task_Object = {
-      ...taskObject,
-      id: this.generateUniqueId(),
-      userId: this.tasksUserId
-    };
-    this.taskList.push(newTask);
-    console.log('New Task Added:', newTask);
-    this.isAddTaskFormVisible = false;
-  }
+  // onCompleteTask(taskId: string) {
+  //   this.tasksService.completeTask(taskId);
+  // }
 
   onStartAddTask() {
     this.isAddTaskFormVisible = true;
   }
-  onCancelAddTask() {
+  onCloseAddTask() {
     this.isAddTaskFormVisible = false;
   }
   onDeleteAllTasks() {
@@ -44,10 +36,6 @@ export class TasksComponent {
   }
 
   get selectedUserTasks() {
-    return this.taskList.filter(task => task.userId === this.tasksUserId);
-  }
-
-  private generateUniqueId(): string {
-    return Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+    return this.tasksService.getTasksByUserId(this.tasksUserId);
   }
 }

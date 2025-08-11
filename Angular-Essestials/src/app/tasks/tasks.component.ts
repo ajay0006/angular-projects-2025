@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from '../task/taskComponent'
 import { AddTaskForm } from '../add-task-form/add-task-form.component';
-import { test_tasks } from '../test-tasks';
-import { Task_Object } from '../../models/task.model';
 import { TasksService } from './tasks.service';
 
 

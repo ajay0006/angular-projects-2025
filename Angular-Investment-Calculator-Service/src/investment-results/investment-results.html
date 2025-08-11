@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <tr>
+            <th>Year</th>
+            <th>Investment Value</th>
+            <th>Interest (Year) </th>
+            <th>Total Interest</th>
+            <th>Invested Caapital</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of fetchResults; let i = index">
+            <td>{{ item.year}}</td>
+            <td>${{ item.investmentValue.toFixed(2) }}</td>
+            <td>${{ item.interest.toFixed(2) }}</td>
+            <td>{{ item.investedCapital.toFixed(2) }}</td>
+            <td>${{ item.totalInterest.toFixed(2) }}</td>
+        </tr>
+        <!-- @for (let item of (res); let i = index) {
+        <tr>
+            <td>{{ i + 1 }}</td>
+            <td>${{ item.initialInvestment.toFixed(2) }}</td>
+            <td>${{ item.annualInvestment.toFixed(2) }}</td>
+            <td>{{ item.expectedReturn }}%</td>
+            <td>${{ item.totalValue.toFixed(2) }}</td>
+        </tr> -->
+        <!-- } -->
+    </tbody>
+</table>
+<!-- Add more rows as needed -->

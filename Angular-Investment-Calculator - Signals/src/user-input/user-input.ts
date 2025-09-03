@@ -10,6 +10,7 @@ import { type Investment_Object } from '../models/investment.model';
   styleUrls: ['./user-input.css']
 })
 export class UserInput {
+  // communicate from child component to parent component
   calculate = output<Investment_Object>();
   investmentObj = signal<Investment_Object>({
     initialInvestment: 0,

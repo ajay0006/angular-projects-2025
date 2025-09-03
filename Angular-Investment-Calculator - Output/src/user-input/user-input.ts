@@ -10,6 +10,7 @@ import { type Investment_Object } from '../models/investment.model';
   styleUrls: ['./user-input.css']
 })
 export class UserInput {
+  // parent to child communication
   @Output() calculate = new EventEmitter<Investment_Object>();
   investmentObj: Investment_Object = {
     initialInvestment: 0,

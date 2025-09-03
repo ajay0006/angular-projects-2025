@@ -10,6 +10,8 @@ import { InvestmentResult } from '../models/investmentResult.model';
 })
 export class InvestmentResults {
 
+  // communication from parent component to child component
+
   resultsArray = input<InvestmentResult[]>();
 
   // @Input() resultsArray?: InvestmentResult[] = [];

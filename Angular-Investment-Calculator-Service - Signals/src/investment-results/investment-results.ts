@@ -1,6 +1,10 @@
 import { Component, computed } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { InvestmentService } from './investment.service';
+import { MatDrawerMode, MatSidenavModule } from '@angular/material/sidenav'
+import { MatButtonModule } from '@angular/material/button';
+import {ConfigurableFocusTrapFactory, FocusTrapFactory} from '@angular/cdk/a11y';
+
 
 @Component({
   selector: 'app-investment-results',

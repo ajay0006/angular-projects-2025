@@ -2,26 +2,43 @@
 <p class="center">Please enter some values and press 'Calculate'.</p>
 } @else {
 
-<table>
-    <thead>
-        <tr>
-            <th>Year</th>
-            <th>Investment Value</th>
-            <th>Interest (Year) </th>
-            <th>Total Interest</th>
-            <th>Invested Capital</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for ( result of results(); track result.year) {
-        <tr>
-            <td>{{ result.year}}</td>
-            <td>${{ result.investmentValue | currency}}</td>
-            <td>${{ result.interest | currency}}</td>
-            <td>{{ result.investedCapital | currency}}</td>
-            <td>${{ result.totalInterest | currency}}</td>
-        </tr>
-        }
-    </tbody>
-</table>
+<mat-sidenav-container class="sidenav-container" [hasBackdrop]="hasBackdrop.value">
+    <mat-sidenav #startSidenav [mode]="mode.value!" [opened]="false" [position]="position.value!">
+        <table>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Investment Value</th>
+                    <th>Interest (Year) </th>
+                    <th>Total Interest</th>
+                    <th>Invested Capital</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for ( result of results(); track result.year) {
+                <tr>
+                    <td>{{ result.year}}</td>
+                    <td>{{ result.investmentValue | currency}}</td>
+                    <td>{{ result.interest | currency}}</td>
+                    <td>{{ result.investedCapital | currency}}</td>
+                    <td>{{ result.totalInterest | currency}}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        <div class="button-center">
+            <p>
+                <button matButton (click)="startSidenav.toggle()">Close</button>
+            </p>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <span>Investment Results</span>
+        <div class="button-center">
+            <p>
+                <button matButton (click)="startSidenav.toggle()">Toggle</button>
+            </p>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 }

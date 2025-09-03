@@ -17,3 +17,34 @@ table tbody {
   font-size: 0.85rem;
   color: #c2e9e0;
 }
+.button-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+button {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #76c0ae;
+  border-radius: 0.25rem;
+  background-color: #83e6c0;
+  color: #1a1f1d;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #aaf1d6;
+}
+
+.sidenav-container {
+  position: relative;
+  width: 1000px;
+  height: 500px;
+  left: 150px;
+  right: 0;
+
+}

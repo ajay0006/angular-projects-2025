@@ -11,6 +11,7 @@ import { type Investment_Object } from '../models/investment.model';
 })
 export class UserInput {
   // communicate from child component to parent component
+  // output sends data to child component
   calculate = output<Investment_Object>();
   investmentObj = signal<Investment_Object>({
     initialInvestment: 0,

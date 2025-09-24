@@ -1,7 +1,9 @@
 <article>
     <header>
         <img [src]="image().src" [alt]="image().alt" />
+        <!-- this outputs the value in the signal as text, thats why i use the {{ }} -->
         <h2>{{ title() }}</h2>
     </header>
+    <!-- this is a placeholder for any content that you want wrapped -->
     <ng-content />
 </article>

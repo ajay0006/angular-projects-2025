@@ -11,8 +11,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTicket {
 
-  onSubmit() {
-    
+  onSubmit(title: string, description: string) {
+
   }
 
 }

@@ -1,15 +1,15 @@
-<form (ngSubmit) = "onSubmit()">
+<form (ngSubmit) = "onSubmit(titleInput.value, textInput.value)">
   <div class="input-group">
     <app-formcontrol >
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" />
+      <input type="text" id="title" name="title" #titleInput />
     </app-formcontrol>
   </div>
 
   <div class="input-group">
     <app-formcontrol >
       <label for="request">Request</label>
-      <textarea id="request" name="request" rows="3"></textarea>
+      <textarea id="request" name="request" rows="3" #textInput></textarea>
     </app-formcontrol>
   </div>
   <p>

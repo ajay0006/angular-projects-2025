@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -6,11 +6,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './server-status.html',
   styleUrl: './server-status.css'
 })
-export class ServerStatus implements OnInit {
+export class ServerStatus implements OnInit, OnDestroy {
   currentStatus: "online" | "offline" | "unknown" = 'offline';
+  private interval?: ReturnType<typeof setInterval>;
+  // this is an alternative to using the aboove method on line 12 & using the ngOnDestroy
+  private destroyRef = inject(DestroyRef)
 
   ngOnInit() {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       const rnd = Math.random();
       if (rnd < 0.5) {
         this.currentStatus = 'online';
@@ -20,5 +23,14 @@ export class ServerStatus implements OnInit {
         this.currentStatus = 'unknown';
       }
     }, 30000);
+
+    // either you use this method or you usse the ngOnDestroy
+    this.destroyRef.onDestroy(() => {
+      clearInterval(this.interval)
+    })
+  }
+
+  ngOnDestroy(): void {
+    clearTimeout(this.interval)
   }
 }

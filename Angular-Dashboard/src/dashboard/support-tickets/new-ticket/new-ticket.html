@@ -1,4 +1,4 @@
-<form (ngSubmit) = "onSubmit(titleInput.value, textInput.value)">
+<form (ngSubmit) = "onSubmitViewChild(titleInput.value, textInput.value)" #form>
   <div class="input-group">
     <app-formcontrol >
       <label for="title">Title</label>

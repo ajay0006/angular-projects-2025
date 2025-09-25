@@ -1,4 +1,4 @@
-import { Component, Host, ViewEncapsulation } from '@angular/core';
+import { Component, contentChild, ContentChild, ElementRef, Host, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-formcontrol',
@@ -19,7 +19,14 @@ import { Component, Host, ViewEncapsulation } from '@angular/core';
   }
 })
 export class Formcontrol {
+  /* Thats because projected content is not part of the template since i am using ngContent*/
+  @ContentChild('inputContentChild') private projectedContent?: ElementRef<HTMLInputElement | HTMLTextAreaElement>
+  private projectedContentSignal = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input')
+
   onClick() {
     console.log('clicked');
+    console.log(this.projectedContent?.nativeElement.value);
+    console.log(this.projectedContentSignal()?.nativeElement.value);
+    
   }
 }

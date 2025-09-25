@@ -1,4 +1,4 @@
-import { Component, contentChild, ContentChild, ElementRef, Host, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, contentChild, ContentChild, ElementRef, Host, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-formcontrol',

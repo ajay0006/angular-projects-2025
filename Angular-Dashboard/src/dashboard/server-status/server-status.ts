@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, DestroyRef, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -7,20 +7,31 @@ import { Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core'
   styleUrl: './server-status.css'
 })
 export class ServerStatus implements OnInit, OnDestroy {
-  currentStatus: "online" | "offline" | "unknown" = 'offline';
+  currentStatus = signal<"online" | "offline" | "unknown">('offline');
   private interval?: ReturnType<typeof setInterval>;
   // this is an alternative to using the aboove method on line 12 & using the ngOnDestroy
   private destroyRef = inject(DestroyRef)
+
+  /*
+when using signals in the template file, angualr automatically subscribess to it, i.e it watches for any changes and refreshes the component
+but it doesnt do that when using the signal in the component file, so we have to manually subscribe to it
+we do this by using the effect method from the angular core library
+  */
+  constructor() {
+    effect(() => {
+      console.log(this.currentStatus());
+    })
+  }
 
   ngOnInit() {
     this.interval = setInterval(() => {
       const rnd = Math.random();
       if (rnd < 0.5) {
-        this.currentStatus = 'online';
+        this.currentStatus.set('online');
       } else if (rnd >= 0.8 && rnd < 0.9) {
-        this.currentStatus = 'offline';
+        this.currentStatus.set('offline');
       } else {
-        this.currentStatus = 'unknown';
+        this.currentStatus.set('unknown');
       }
     }, 30000);
 

@@ -15,11 +15,18 @@ export class SupportTickets {
 
   onAddNewTicket(ticketData: TicketModel) {
     let ticket: TicketModel
-    console.log(ticketData, "support ticket data");
-    
     ticket = { ...ticketData }
     this.tickets.push(ticket)
-    console.log(this.tickets, "tickets");
+  }
+
+  onCloseTicket(id: string) {
+    this.tickets = this.tickets.map((ticket) => {
+      if (ticket.id === id) {
+        return { ...ticket, status: 'closed' }
+      }
+      return ticket;
+    })
+
   }
 
 }

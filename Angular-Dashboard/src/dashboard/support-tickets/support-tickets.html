@@ -3,7 +3,7 @@
     <ul>
       @for (ticket of tickets; track ticket.id){
       <li>
-        <app-ticket [ticketData]="ticket" />
+        <app-ticket [ticketData]="ticket" (close)="onCloseTicket(ticket.id!)" />
       </li>
       }
       @empty {

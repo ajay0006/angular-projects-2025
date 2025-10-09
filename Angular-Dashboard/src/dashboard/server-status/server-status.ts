@@ -35,7 +35,7 @@ we do this by using the effect method from the angular core library
       }
     }, 30000);
 
-    // either you use this method or you usse the ngOnDestroy
+    // either you use this method or you use the ngOnDestroy
     this.destroyRef.onDestroy(() => {
       clearInterval(this.interval)
     })

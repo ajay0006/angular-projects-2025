@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, viewChild, ViewChild, output } from '@angular/core';
 import { Button } from "../../../shared/button/button";
 import { Formcontrol } from "../../../shared/formcontrol/formcontrol";
 import { FormsModule } from '@angular/forms';
+import { TicketModel } from '../ticket/ticket.model';
 
 @Component({
   selector: 'app-new-ticket',
@@ -19,7 +20,9 @@ export class NewTicket implements AfterViewInit, OnInit {
   // keep in mind that if you are using required, it means you are sure that there is a template variable named form
   private formNewWay = viewChild.required<ElementRef<HTMLFormElement>>('form');
 
-  /* Dami keep in mind that this onl;y works for the decorator type of the ViewChild, it doesnt apply to the signal type aka the newer type
+  public addTicket = output<TicketModel>();
+
+  /* Dami keep in mind that this only works for the decorator type of the ViewChild, it doesnt apply to the signal type aka the newer type
 why? well because with the signal type, the content/variable is available to a ngOnInit, so there would be no need to use the ngAfterViewInit
 
 but the kicker here, is that if using the ngAfterViewInit, we are resst assured that def something will be retrieved, since this only initialisess after a view ha been selected
@@ -37,15 +40,23 @@ but the kicker here, is that if using the ngAfterViewInit, we are resst assured 
   }
 
   onSubmitViewChild(title: string, description: string) {
-    console.log(title);
-    console.log(description);
+    this.addTicket.emit({
+      id: crypto.randomUUID(),
+      title,
+      description,
+      status: 'open'
+    });
     this.formOldWay?.nativeElement.reset();
     this.formNewWay().nativeElement.reset();
   }
 
   onSubmitTemplateVariable(title: string, description: string, form: HTMLFormElement) {
-    console.log(title);
-    console.log(description);
+    this.addTicket.emit({
+      id: crypto.randomUUID(),
+      title,
+      description,
+      status: 'open'
+    });
     form.reset();
   }
 

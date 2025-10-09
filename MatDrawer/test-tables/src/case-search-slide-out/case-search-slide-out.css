@@ -1,0 +1,62 @@
+.detail-card {
+    box-shadow: none;
+    height: 100%;
+    overflow-x: hidden;
+    width: 450px;
+    display: flex;
+}
+
+.drawer.content {
+    padding: 50px;
+}
+
+.header {
+    position: relative;
+    padding: 8px, 8px, 0, 8px;
+}
+
+.label {
+    font-size: 11px;
+    color: rgba(0,0,0,.6);
+    letter-spacing: .2px;
+}
+
+.value {
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: self-start;
+    padding: 12px 8px 8px;
+    margin-top: auto;
+}
+
+.close-btn{
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    padding: 12px 8px 0 8px;
+}
+
+.period-date {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    padding: 12px 8px 0 8px;
+}
+
+.date-item {
+    display: flex;
+    flex-direction: column;
+}

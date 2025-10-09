@@ -1,0 +1,13 @@
+.clickable-row{
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+mat-form-field {
+    width: 300px;
+}

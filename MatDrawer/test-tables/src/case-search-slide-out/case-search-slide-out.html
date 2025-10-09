@@ -1,0 +1,135 @@
+<mat-card class="detail-card" appearance="outlined">
+    <!-- Panel 1 (Top Panel) -->
+    <div class="header">
+        <button mat-icon-button class="close-btn" aria-label="close details" (click)="closeDrawer.emit()">
+            <mat-icon>close</mat-icon>
+        </button>
+        <!-- labels begin -->
+        <mat-card-title>
+            <div> {{ slideOutData.caseNumber }}</div>
+            <div>{{slideOutData.clientName}}</div>
+            <div>{{slideOutData.accountNumber}}</div>
+            <br>
+        </mat-card-title>
+    </div>
+    <mat-divider />
+
+    <!-- panel 2 for SA Details -->
+    @if(displaySASlideout){
+    <div class="grid">
+        <div>
+            <div class="label">Case Workload</div>
+            <div class="value">{{slideOutData.workLoad}}</div>
+        </div>
+        <div>
+            <div class="label">Case Status</div>
+            <div class="value">{{slideOutData.caseStatus}}</div>
+        </div>
+        <div>
+            <div class="label">Case Category</div>
+            <div class="value">{{slideOutData.category}}</div>
+        </div>
+        <div>
+
+        </div>
+
+        <div>
+            <div class="label">Date Received</div>
+            <div class="value">{{slideOutData.receivedDate | date: "yyyy-MM-dd"}}</div>
+        </div>
+        <div>
+            <div class="label">Date Created</div>
+            <div class="value">{{slideOutData.createdDate | date: "yyyy-MM-dd"}}</div>
+        </div>
+    </div>
+    <mat-divider />
+    }
+
+    <!-- Panel 2 for T2 Details  -->
+
+    @if(displayT2Slideout){
+    <div class="grid">
+        <div>
+            <div class="label">Case Type</div>
+            <div class="value">{{slideOutData.caseType}}</div>
+        </div>
+        <div>
+            <div class="label">Case Status</div>
+            <div class="value">{{slideOutData.caseStatus}}</div>
+        </div>
+        <div>
+            <div class="label">Case Category</div>
+            <div class="value">{{slideOutData.category}}</div>
+        </div>
+        <div>
+
+        </div>
+
+        <div>
+            <div class="label">Date Created</div>
+            <div class="value">{{slideOutData.createdDate | date: "yyyy-MM-dd"}}</div>
+        </div>
+        <div>
+            <div class="label">Tax Year End</div>
+            <div class="value">{{slideOutData.taxYearEnd | date: "yyyy-MM-dd"}}</div>
+        </div>
+    </div>
+    <mat-divider />
+    }
+
+    <!-- Panel 3  -->
+
+    <div class="grid">
+        <div>
+            <div class="label">Case Assigned User</div>
+            <div class="value">{{slideOutData.assignedUerId}}</div>
+        </div>
+        <div>
+            <div class="label">Case Assigned Office</div>
+            <div class="value">{{slideOutData.officeNameEn}}</div>
+        </div>
+        <div>
+            <div class="label">User ID</div>
+            <div class="value">{{slideOutData.assignedUsserId}}</div>
+        </div>
+    </div>
+    <mat-divider />
+
+    <!-- Panel 4  -->
+    @if (displaySASlideout){
+    @if(slideOutData.fillingPeriods && slideOutData.filingPeriods.length > 0){
+        @for (period of slideOutData.fillingPeriods; track $index) {
+        <div class="period-date">
+            <div class="date-item">
+                <div class="label">Case Period Start Date</div>
+                <div class="value"> {{period.startDate | date: 'yyyy-MM-dd'}}</div>
+            </div>
+            <div>
+                <div class="label">Case Period End Date</div>
+                <div class="value"> {{period.endDate | date: 'yyyy-MM-dd'}}</div>
+            </div>
+        </div>
+        }
+    }
+
+
+    }
+
+    @else if (displayT2Slideout) {
+    <div class="grid">
+        @if (slideOutData.carpProjectNumber) {
+        <div>
+            <div class="label">Case Carp Project Number</div>
+            <div class="value">{{ slideOutData?.carpProjectNumber | date: "yyyy-mm-dd"}}</div>
+        </div>
+        }
+    </div>
+    }
+
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="onClickViewActivitySummary()">
+            View Activity summary
+        </button>
+        <button mat-raised-button (click)="closeDrawer.emit()"> Close </button>
+    </div>
+</mat-card>

@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, model, output } from '@angular/core';
 import { sizeModel } from './sizeModel';
 
 @Component({
@@ -10,12 +10,25 @@ import { sizeModel } from './sizeModel';
 })
 export class RectComponent {
 
-  size = input.required<sizeModel>()
-  sizeChange = output<sizeModel>()
+  // 2 way binding the old way
+
+  sizeOldWay = input.required<sizeModel>()
+  sizeOldWayChange = output<sizeModel>()
+
+  // 2 way binding the new way
+
+  sizeNewWay = model.required<sizeModel>()
 
 
-  onReset() {
-    this.sizeChange.emit({
+  onResetOldWay() {
+    this.sizeOldWayChange.emit({
+      width: '200',
+      height: '100',
+    })
+  }
+
+  onResetNewWay() {
+    this.sizeNewWay.set({
       width: '200',
       height: '100',
     })

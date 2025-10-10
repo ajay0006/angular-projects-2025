@@ -2,11 +2,10 @@ import { Component, input, model, output } from '@angular/core';
 import { sizeModel } from './sizeModel';
 
 @Component({
-  selector: 'app-rect',
-  standalone: true,
-  imports: [],
-  templateUrl: './rect.component.html',
-  styleUrl: './rect.component.css',
+    selector: 'app-rect',
+    imports: [],
+    templateUrl: './rect.component.html',
+    styleUrl: './rect.component.css'
 })
 export class RectComponent {
 
